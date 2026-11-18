@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLADE &amp; STYLE — Street Barbershop</title>
+    <style>
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+        /* Шапка с чёткой нижней линией */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 6%;
+            border-bottom: 2px solid #262626;
+            background-color: #0d0d0d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .logo span { color: #c8ff00; }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        nav a:hover { color: #c8ff00; }
+
+        /* Асимметричный главный экран: текст слева, фото справа */
+        .hero {
+            display: flex;
+            align-items: stretch;
+            border-bottom: 2px solid #262626;
+        }
+        .hero-left {
+            flex: 1;
+            padding: 80px 6%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 2px solid #262626;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #c8ff00;
+            color: #0d0d0d;
+            font-weight: 900;
+            font-size: 12px;
+            padding: 5px 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: fit-content;
+            margin-bottom: 25px;
+        }
+        .hero-left h1 {
+            font-size: 54px;
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            margin: 0 0 25px 0;
+        }
+        .hero-left p {
+            color: #a3a3a3;
+            font-size: 17px;
+            max-width: 480px;
+            margin: 0 0 35px 0;
+        }
+        .btn-sharp {
+            display: inline-block;
+            background-color: #c8ff00;
+            color: #0d0d0d;
+            padding: 18px 36px;
+            font-weight: 900;
+            font-size: 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: fit-content;
+            border: 2px solid #c8ff00;
+            transition: 0.2s;
+        }
+        .btn-sharp:hover {
+            background-color: transparent;
+            color: #c8ff00;
+        }
+        .hero-right {
+            flex: 1;
+            min-height: 500px;
+            background: url('barber-bg.jpg') center/cover no-repeat;
+            filter: contrast(1.1);
+        }
+
+        /* Журнальный блок услуг во всю ширину */
+        .menu-section {
+            padding: 80px 6%;
+            border-bottom: 2px solid #262626;
+        }
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+        }
+        .section-head h2 {
+            font-size: 40px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: 1;
+        }
+        .section-head span {
+            color: #c8ff00;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        .service-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+padding: 25px 0;
+            border-top: 1px solid #262626;
+            gap: 25px;
+        }
+        .service-row:last-child { border-bottom: 1px solid #262626; }
+        .service-thumb {
+            width: 140px;
+            height: 95px;
+            object-fit: cover;
+            border: 2px solid #262626;
+        }
+        .service-desc { flex: 1; }
+        .service-desc h3 {
+            margin: 0 0 6px 0;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .service-desc p {
+            margin: 0;
+            color: #888888;
+            font-size: 15px;
+        }
+        .service-price {
+            font-size: 28px;
+            font-weight: 900;
+            color: #c8ff00;
+            white-space: nowrap;
+        }
+
+        /* Контрастная полоса преимуществ */
+        .ticker-bar {
+            background-color: #c8ff00;
+            color: #0d0d0d;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 900;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Двухколоночный подвал с контактами */
+        .footer-grid {
+            display: flex;
+            padding: 70px 6%;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+        .footer-title {
+            font-size: 36px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+        }
+        .footer-sub { color: #888888; margin: 0; font-size: 16px; }
+        .contact-actions { text-align: right; }
+        .big-tel {
+            display: block;
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+        .big-tel:hover { color: #c8ff00; }
+
+        /* Адаптация под смартфоны */
+        @media (max-width: 820px) {
+            header { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+            .hero { flex-direction: column; }
+            .hero-left { border-right: none; border-bottom: 2px solid #262626; padding: 50px 5%; }
+            .hero-left h1 { font-size: 36px; }
+            .hero-right { min-height: 280px; }
+            .section-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .section-head h2 { font-size: 30px; }
+            .service-row { flex-direction: column; align-items: flex-start; }
+            .service-thumb { width: 100%; height: 180px; }
+            .ticker-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .footer-grid { flex-direction: column; align-items: flex-start; padding: 50px 5%; }
+            .contact-actions { text-align: left; }
+            .big-tel { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">BLADE <span>//</span> STYLE</div>
+        <nav>
+            <a href="#services">Прайс</a>
+            <a href="#info">Атмосфера</a>
+            <a href="#contact">Запись</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-left">
+            <div class="badge">Без лишних слов • С 2019 года</div>
+            <h1>Мужские стрижки с характером</h1>
+            <p>Никакого пафоса — только точные формы, опасное бритьё, крепкий эспрессо и правильная музыка.</p>
+            <a href="#contact" class="btn-sharp">Занять кресло</a>
+        </div>
+        <div class="hero-right"></div>
+    </section>
+
+    <section class="menu-section" id="services">
+        <div class="section-head">
+            <h2>Прайс-лист</h2>
+            <span>// Выбери свой формат</span>
+        </div>
+
+        <div class="service-row">
+            <img src="haircut.jpg" alt="Мужская стрижка" class="service-thumb">
+            <div class="service-desc">
+                <h3>01. Мужская стрижка</h3>
+
+<p>Работа ножницами и машинкой, мытьё головы и стайлинг под твой тип волос.</p>
+            </div>
+            <div class="service-price">1 500 ₽</div>
+        </div>
+
+        <div class="service-row">
+            <img src="beard.jpg" alt="Стрижка бороды" class="service-thumb">
+            <div class="service-desc">
+                <h3>02. Моделирование бороды</h3>
+                <p>Чёткая геометрия, горячий компресс, бритьё шаветкой и уход маслом.</p>
+            </div>
+            <div class="service-price">1 100 ₽</div>
+        </div>
+
+        <div class="service-row">
+            <img src="cosmetics.jpg" alt="Комбо стрижка и борода" class="service-thumb">
+            <div class="service-desc">
+                <h3>03. Комбо: Стрижка + Борода</h3>
+                <p>Полный порядок за один сеанс. Выгоднее на 300 рублей, чем по отдельности.</p>
+            </div>
+            <div class="service-price">2 300 ₽</div>
+        </div>
+    </section>
+
+    <div class="ticker-bar" id="info">
+        <span>★ Рейтинг 4.9 на картах</span>
+        <span>★ 100% стерильный инструмент</span>
+        <span>★ Бесплатный бар и кофе</span>
+    </div>
+
+    <footer class="footer-grid" id="contact">
+        <div>
+            <h2 class="footer-title">Готов обновиться?</h2>
+            <p class="footer-sub">ул. Ленина, д. 25 • Работаем ежедневно с 10:00 до 21:00</p>
+        </div>
+        <div class="contact-actions">
+            <a href="tel:+79991234567" class="big-tel">+7 (999) 123-45-67</a>
+            <a href="tel:+79991234567" class="btn-sharp">Позвонить барберу</a>
+        </div>
+    </footer>
+
+</body>
+</html>
+
